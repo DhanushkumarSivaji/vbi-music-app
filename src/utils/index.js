@@ -1,0 +1,1 @@
+export const truncate = (input) => input.length > 5 ? `${input.substring(0, 25)}...` : input;
