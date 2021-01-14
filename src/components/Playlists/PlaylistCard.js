@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import PropTypes from 'prop-types';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from "react-router-dom";
@@ -24,7 +25,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-export default function PlaylistCard({ data }) {
+function PlaylistCard({ data }) {
     const classes = useStyles();
     const history = useHistory();
 
@@ -42,7 +43,7 @@ export default function PlaylistCard({ data }) {
                 <Card className={classes.root} onClick={() => handleClick(val)} key={i}>
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            <Typography component="h5" variant="h5">
+                            <Typography component="h5" variant="h5" style={{textTransform:'capitalize'}}>
                                 {val?.name}
                             </Typography>
                             <Typography variant="subtitle1" color="textSecondary">
@@ -63,3 +64,8 @@ export default function PlaylistCard({ data }) {
     )
 }
 
+PlaylistCard.propTypes = {
+    data: PropTypes.instanceOf(Array)
+};
+
+  export default PlaylistCard;

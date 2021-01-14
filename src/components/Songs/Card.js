@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function MediaControlCard({ data,showSM,showMenu,handleClick }) {
+function SongsCard({ data,showSM,showMenu,handleClick }) {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -95,3 +96,13 @@ export default function MediaControlCard({ data,showSM,showMenu,handleClick }) {
         </>
     );
 }
+
+SongsCard.propTypes = {
+    showMenu: PropTypes.bool,
+    showSM: PropTypes.bool,
+    handleClick: PropTypes.func,
+    data: PropTypes.instanceOf(Array),
+};
+
+  
+export default SongsCard;

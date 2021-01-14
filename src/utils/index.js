@@ -20,3 +20,8 @@ export const shuffleArray = (array) => {
     });
     return copy
 }
+
+export const firstUpperCase = (input) =>
+{
+    return input[0].toUpperCase() + input.substr(1);
+}

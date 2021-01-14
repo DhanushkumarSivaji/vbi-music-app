@@ -10,7 +10,7 @@ import { SONGS_MENU_ITEM_ADD } from "../../constants";
 
 const ITEM_HEIGHT = 40;
 
-export default function LongMenu({songData}) {
+export default function MenuList({songData}) {
 
   let dispatch = useDispatch()
   let state = useSelector(state => state?.data?.playlists) 

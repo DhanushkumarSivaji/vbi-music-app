@@ -1,11 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Card from './Card';
 import {  SONGS_CARD_CONTAINER_NO_SONGS} from "../../constants";
 
 
-export default function MediaControlCard({songs}) {
+function CardsContainer({songs}) {
 
   
     return (
@@ -22,3 +23,10 @@ export default function MediaControlCard({songs}) {
         </Grid>
     );
 }
+
+CardsContainer.propTypes = {
+    songs: PropTypes.instanceOf(Array),
+};
+
+
+export default CardsContainer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,7 +11,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-export default function MaxWidthDialog({ open, handleSubmit, handleModalClose, handlePlaylistChange, playlists, value }) {
+function Modal({ open, handleSubmit, handleModalClose, handlePlaylistChange, playlists, value }) {
   return (
     <React.Fragment>
       <Dialog
@@ -56,3 +57,14 @@ export default function MaxWidthDialog({ open, handleSubmit, handleModalClose, h
     </React.Fragment>
   );
 }
+
+Modal.propTypes = {
+  value: PropTypes.string,
+  open: PropTypes.bool,
+  handleSubmit: PropTypes.func,
+  handleModalClose: PropTypes.func,
+  handlePlaylistChange: PropTypes.func,
+  playlists: PropTypes.instanceOf(Array),
+};
+
+export default Modal;

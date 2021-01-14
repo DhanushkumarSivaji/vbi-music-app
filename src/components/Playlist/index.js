@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -76,7 +77,7 @@ function Playlist({ location, history }) {
         <div className={classes.root}>
             <AppBar position="static" className={classes.backgroundColor}>
                 <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit">
+                    <Typography variant="h6" color="inherit" style={{textTransform:'capitalize'}}>
                         playlist - {playlist?.name}
                     </Typography>
                 </Toolbar>
@@ -96,5 +97,10 @@ function Playlist({ location, history }) {
         </div>
     )
 }
+
+Playlist.propTypes = {
+    location: PropTypes.instanceOf(Object),
+    history: PropTypes.instanceOf(Object)
+};
 
 export default Playlist;
