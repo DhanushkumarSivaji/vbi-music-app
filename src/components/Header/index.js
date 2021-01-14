@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { COMPOENTS_HEADER_TITLE_TEXT } from '../../constants'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,21 +20,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
-
 export default function Header() {
     const classes = useStyles();
 
     return (
         <AppBar className={classes.backgroundColor}>
             <Toolbar>
-                <Typography variant="h6" className={classes.title}>VBI Music App</Typography>
+                <Typography variant="h6" className={classes.title}>{COMPOENTS_HEADER_TITLE_TEXT}</Typography>
             </Toolbar>
         </AppBar>
     );
 }
 
-
-//https://jsonplaceholder.typicode.com/albums
-//https://jsonplaceholder.typicode.com/photos
 

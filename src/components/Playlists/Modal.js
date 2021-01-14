@@ -6,6 +6,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { PLAYLISTS_MODAL_DESC , PLAYLISTS_MODAL_CANCEL , PLAYLISTS_MODAL_CREATE} from '../../constants'
+
 
 export default function FormDialog({handleClose,open,value,onChange,onClick}) {
 
@@ -13,27 +15,32 @@ export default function FormDialog({handleClose,open,value,onChange,onClick}) {
     <div>
       <Dialog open={open} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Create Playlist</DialogTitle>
+        <hr/>
         <DialogContent>
           <DialogContentText>
-            To add a new playlist, please enter name of the playlist here. We will create you one.
+            {PLAYLISTS_MODAL_DESC}
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
             value={value}
-            label="Email Playlist Name"
+            placeholder="Enter Playlist Name"
             type="text"
             onChange={onChange}
+            InputLabelProps={{
+              shrink: true,
+          }}
+            variant="outlined"
             fullWidth
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            {PLAYLISTS_MODAL_CANCEL}
           </Button>
           <Button onClick={onClick} color="primary">
-            Create
+            {PLAYLISTS_MODAL_CREATE}
           </Button>
         </DialogActions>
       </Dialog>

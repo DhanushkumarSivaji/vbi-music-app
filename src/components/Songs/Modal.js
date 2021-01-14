@@ -1,35 +1,16 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-
-
-const useStyles = makeStyles((theme) => ({
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: 'fit-content',
-  },
-  formControl: {
-    marginTop: theme.spacing(2),
-    minWidth: 200,
-  },
-  formControlLabel: {
-    marginTop: theme.spacing(1),
-  },
-}));
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 export default function MaxWidthDialog({ open, handleSubmit, handleModalClose, handlePlaylistChange, playlists, value }) {
-  const classes = useStyles();
   return (
     <React.Fragment>
       <Dialog
@@ -44,24 +25,19 @@ export default function MaxWidthDialog({ open, handleSubmit, handleModalClose, h
           <DialogContentText>
             You can add this song to the playlist listed below.
           </DialogContentText>
-          <form className={classes.form} noValidate>
-            <FormControl variant="filled" className={classes.formControl}>
-              <InputLabel htmlFor="max-width">select playlist</InputLabel>
-              <Select
-                autoFocus
+          <FormControl component="fieldset">
+              <RadioGroup
+                aria-label="playlist"
+                name="playlist1"
                 value={value}
                 onChange={(e) => handlePlaylistChange(e)}
-                inputProps={{
-                  name: 'max-width',
-                  id: 'max-width',
-                }}
               >
                 {playlists.map((val, i) => (
-                  <MenuItem value={val?.name} key={i}>{val?.name}</MenuItem>
+                  <FormControlLabel value={val?.name} key={i} control={<Radio />} label={val?.name} />
                 ))}
-              </Select>
-            </FormControl>
-          </form>
+              </RadioGroup>
+        </FormControl>
+
         </DialogContent> : 
         <DialogContent>
             <DialogContentText>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import Card from '../Songs/Card';
+import { SHUFFLE_TEXT, NO_SONGS_IN_PLAYLIST } from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
 function Playlist({ location, history }) {
     const classes = useStyles();
     const [playlist, setPlaylist] = useState(null)
-     // eslint-disable-next-line
-    const [count,setCount] = useState(0)
+    const [count, setCount] = useState(0)
 
     useEffect(() => {
         if (location?.state) {
@@ -40,7 +41,6 @@ function Playlist({ location, history }) {
         } else {
             history.push('/')
         }
-        // eslint-disable-next-line
     }, [location.state])
 
     const handleClick = (val) => {
@@ -50,25 +50,24 @@ function Playlist({ location, history }) {
             ...obj1,
             songs: obj1.songs.filter((x) => x.songId !== obj2.songId),
         };
-        localStorage.setItem("playlist",JSON.stringify(obj1))
+        localStorage.setItem("playlist", JSON.stringify(obj1))
         setPlaylist(obj1)
     }
 
     useEffect(() => {
-        if(playlist?.songs?.length === 0) {
+        if (playlist?.songs?.length === 0) {
             history.push('/')
         }
-     // eslint-disable-next-line
     }, [playlist])
 
     const shuffleArray = () => {
         var shuffledArray = [].concat(playlist.songs);
-            shuffledArray.sort(function(){
-             return 0.5 - Math.random();
-            }); 
+        shuffledArray.sort(function () {
+            return 0.5 - Math.random();
+        });
         let shuffledPlaylist = playlist
-        shuffledPlaylist.songs = [...shuffledArray] 
-        setCount(count => count+1)
+        shuffledPlaylist.songs = [...shuffledArray]
+        setCount(count => count + 1)
         setPlaylist(shuffledPlaylist)
     }
 
@@ -82,17 +81,17 @@ function Playlist({ location, history }) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <div style={{float:'right'}}>
-            {playlist?.songs?.length > 0 && 
-            <Fab variant="extended" onClick={shuffleArray}>
-                <ShuffleIcon className={classes.extendedIcon} />
-                 Shuffle
-            </Fab> }
+            <div style={{ float: 'right' }}>
+                {playlist?.songs?.length > 1 &&
+                    <Fab variant="extended" onClick={shuffleArray}>
+                        <ShuffleIcon className={classes.extendedIcon} />
+                        {SHUFFLE_TEXT}
+                    </Fab>}
             </div>
             {playlist?.songs?.length > 0 ? <Grid container spacing={3} >
-            <Card data={playlist?.songs} showSM={false} showMenu={false} handleClick={handleClick} />
-            </Grid> :<Typography component="h6" variant="h6" style={{textAlign:'center'}}>
-                   No songs in this playlist
+                <Card data={playlist?.songs} showSM={false} showMenu={false} handleClick={handleClick} />
+            </Grid> : <Typography component="h6" variant="h6" style={{ textAlign: 'center' }}>
+                    {NO_SONGS_IN_PLAYLIST}
                 </Typography>}
         </div>
     )

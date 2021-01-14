@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from "react-router-dom";
+import { PLAYLIST_CARD_NO_PLAYLISTS } from "../../constants";
 
 
 const useStyles = makeStyles(() => ({
@@ -54,7 +55,7 @@ export default function PlaylistCard({ data }) {
                     </div>
                 </Card>
             )) : <Typography component="h6" variant="h6" style={{textAlign:'center'}}>
-                    No playlist to display. Please create one
+                   {PLAYLIST_CARD_NO_PLAYLISTS}
                 </Typography>}
         </div>
 

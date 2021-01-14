@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch } from 'react-redux';
 import { filterSongs } from '../../actions'
-
+import { SONGS_SEARCH_DESC } from "../../constants";
 
 const useStyles = makeStyles({
     root: {
@@ -41,7 +41,7 @@ export default function Search() {
         <Card className={classes.root} variant="outlined">
             <CardContent>
                 <Typography className={classes.title} variant="h5" component="h6" gutterBottom>
-                  <i className="fas fa-music" /> Search For A Song
+                  <i className="fas fa-music" /> {SONGS_SEARCH_DESC}
                 </Typography>
                 <TextField
                     id="outlined-full-width"

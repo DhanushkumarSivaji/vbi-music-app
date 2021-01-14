@@ -6,6 +6,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { useSelector,useDispatch } from 'react-redux';
 import { addSongToPlaylist } from '../../actions'
 import Modal from "./Modal";
+import { SONGS_MENU_ITEM_ADD } from "../../constants";
 
 const ITEM_HEIGHT = 40;
 
@@ -30,6 +31,10 @@ export default function LongMenu({songData}) {
     setAnchorEl(null);
     setOpenModal(true)
   };
+
+  const handleOutsideClickClose = () => {
+    setAnchorEl(null);
+  }
 
   const handleModalClose = () => {
     setOpenModal(false)
@@ -65,7 +70,7 @@ export default function LongMenu({songData}) {
         anchorEl={anchorEl}
         keepMounted
         open={open}
-        onClose={handleClose}
+        onClose={handleOutsideClickClose}
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
@@ -73,7 +78,7 @@ export default function LongMenu({songData}) {
           }
         }}
       >
-        <MenuItem onClick={handleClose}>Add to Playlist</MenuItem>
+        <MenuItem onClick={handleClose}>{SONGS_MENU_ITEM_ADD}</MenuItem>
       </Menu>
       <Modal open={openModal} handleModalClose={handleModalClose} value={playlist} handleSubmit={handleSubmit} handlePlaylistChange={handlePlaylistChange} playlists={playlists}/>
     </div>

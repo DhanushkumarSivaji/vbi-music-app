@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { GET_SONGS,FILTER_SONGS,LOCAL_STORAGE_CREATE_PLAYLIST,CREATE_PLAYLIST,ADD_SONG_TO_PLAYLIST } from "../actions/Types";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,7 +8,6 @@ const initialState = {
   filtered: null
 };
 
-// eslint-disable-next-line
 export default function (state = initialState, action) {
   switch (action.type) {
     case GET_SONGS:
@@ -37,7 +37,6 @@ export default function (state = initialState, action) {
     case ADD_SONG_TO_PLAYLIST:
       let songObj = action.payload.song
       songObj = {...songObj ,...{ "songId" :  uuidv4()}}
-
       return {
         ...state,
         playlists: state.playlists.map((playlist) => 

@@ -8,6 +8,7 @@ import Modal from './Modal';
 import {createdAt } from '../../utils'
 import {createPlaylist,localStorageCreatePlaylist} from '../../actions'
 import PlaylistCard from './PlaylistCard';
+import {ADD_PLAYLIST} from '../../constants'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -73,7 +74,7 @@ export default function Playlist() {
         <div>
             <Fab variant="extended" onClick={handleClickOpen}>
                 <AddIcon className={classes.extendedIcon} />
-                 Add Playlist
+                 {ADD_PLAYLIST}
             </Fab>
             <PlaylistCard data={playList}/>
             <Modal open={open} handleClose={handleClose} value={playlistName} onChange={handleChange} onClick={handleSubmit}/>
