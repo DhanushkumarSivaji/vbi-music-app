@@ -6,7 +6,7 @@ export const SHUFFLE_TEXT = 'Shuffle'
 export const NO_SONGS_IN_PLAYLIST = ' No songs in this playlist'
 
 /* components/Playlists */
-export const ADD_PLAYLIST = 'Add Playlist'
+export const ADD_PLAYLIST = 'Create Playlist'
 
 /* components/Playlists/Modal */
 export const PLAYLISTS_MODAL_DESC = 'To add a new playlist, please enter name of the playlist here. We will create you one.'
