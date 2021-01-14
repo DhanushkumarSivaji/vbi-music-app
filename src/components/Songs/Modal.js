@@ -10,6 +10,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import {SONGS_MODAL_TITLE,SONGS_MODAL_DESC1,SONGS_MODAL_DESC2,SONGS_MODAL_CANCEL,SONGS_MODAL_SUBMIT} from '../../constants';
 
 function Modal({ open, handleSubmit, handleModalClose, handlePlaylistChange, playlists, value }) {
   return (
@@ -21,10 +22,10 @@ function Modal({ open, handleSubmit, handleModalClose, handlePlaylistChange, pla
         onClose={handleModalClose}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle id="max-width-dialog-title">Add To Playlist</DialogTitle>
+        <DialogTitle id="max-width-dialog-title">{SONGS_MODAL_TITLE}</DialogTitle>
         {playlists.length > 0 ? <DialogContent>
           <DialogContentText>
-            You can add this song to the playlist listed below.
+            {SONGS_MODAL_DESC1}
           </DialogContentText>
           <FormControl component="fieldset">
               <RadioGroup
@@ -42,16 +43,16 @@ function Modal({ open, handleSubmit, handleModalClose, handlePlaylistChange, pla
         </DialogContent> : 
         <DialogContent>
             <DialogContentText>
-              Please create a playlist
+              {SONGS_MODAL_DESC2}
           </DialogContentText>
           </DialogContent>}
         <DialogActions>
-          {playlists?.length > 0 && <Button onClick={handleSubmit} color="primary">
-            Submit
-          </Button>}
-          <Button onClick={handleModalClose} color="primary">
-            Close
+        <Button onClick={handleModalClose} color="primary">
+            {SONGS_MODAL_CANCEL}
           </Button>
+          {playlists?.length > 0 && <Button onClick={handleSubmit} color="primary">
+            {SONGS_MODAL_SUBMIT}
+          </Button>}
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -25,6 +25,13 @@ export const SONGS_MENU_ITEM_ADD = 'Add to Playlist'
 /* components/Songs/Search */
 export const SONGS_SEARCH_DESC= 'Search For A Song'
 
+/* components/Songs/Modal */
+export const SONGS_MODAL_TITLE = 'Add To Playlist'
+export const SONGS_MODAL_DESC1= 'You can add this song to the playlist listed below.'
+export const SONGS_MODAL_DESC2= 'Please create a playlist'
+export const SONGS_MODAL_CANCEL= 'Cancel'
+export const SONGS_MODAL_SUBMIT= 'Submit'
+
 /* NOT FOUND PAGE */
 export const NOT_FOUND_PAGE_HEADING = '404 - Page not found'
 export const NOT_FOUND_PAGE_DESC = 'We are sorry, but the requested page could not be found.'
