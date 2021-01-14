@@ -1,1 +1,22 @@
-export const truncate = (input) => input.length > 5 ? `${input.substring(0, 25)}...` : input;
+export const truncate = (input,truncateLimit) => input.length > 5 ? `${input.substring(0, truncateLimit)}...` : input;
+
+export const createdAt = () => {
+    var m = new Date();
+    var dateString =
+    m.getUTCFullYear() + "/" +
+    ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+    ("0" + m.getUTCDate()).slice(-2) + " " +
+    ("0" + m.getUTCHours()).slice(-2) + ":" +
+    ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+    ("0" + m.getUTCSeconds()).slice(-2);
+
+    return dateString
+}
+
+export const shuffleArray = (array) => {
+    var copy = [].concat(array);
+    copy.sort(function(){
+        return 0.5 - Math.random();
+    });
+    return copy
+}

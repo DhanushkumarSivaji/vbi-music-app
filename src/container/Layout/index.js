@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Route } from "react-router-dom";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+import Box from '@material-ui/core/Box';
 import Header from '../../components/Header';
-import Tab from '../../components/Tab'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,17 +58,23 @@ ScrollTop.propTypes = {
     window: PropTypes.func,
 };
 
-export default function BackToTop(props) {
+export default function Layout(props) {
+    const { component: Component, ...rest } = props
     const classes = useStyles();
     return (
-        <React.Fragment>
+        
+        <Route
+        {...rest}
+        render={(matchProps) => (
+        <>
+       <React.Fragment>
             <CssBaseline />
             <Header/>
             <Toolbar id="back-to-top-anchor" />
             <Container>
-                <Box my={4} m={2}>
-                    <Tab/>
-                </Box>
+            <Box my={4} m={2}>
+                <Component {...matchProps} />
+            </Box>
             </Container>
             <ScrollTop {...props}>
                 <Fab  className={classes.backgroundColor} size="small" aria-label="scroll back to top">
@@ -76,6 +82,10 @@ export default function BackToTop(props) {
                 </Fab>
             </ScrollTop>
         </React.Fragment>
+        </>
+
+        )}
+    />
     );
 }
 

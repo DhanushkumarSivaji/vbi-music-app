@@ -1,11 +1,13 @@
 import React,{useState,useEffect} from 'react';
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import {localStorageCreatePlaylist} from '../../actions'
 import CardsContainer from './CardsContainer';
 import Search from './Search';
 
 const Songs = () => {
-  const songsState = useSelector((state) => state.data.songs);
-  const filteredSongsState = useSelector((state)=> state.data.filtered)
+  const dispatch = useDispatch()
+  const songsState = useSelector((state) => state?.data?.songs);
+  const filteredSongsState = useSelector((state)=> state?.data?.filtered)
   const [songs,setSongs] = useState(null)
   const [filtered,setFiltered] = useState(null)
 
@@ -16,6 +18,13 @@ const Songs = () => {
   useEffect(()=>{
     setFiltered(filteredSongsState)
   },[filteredSongsState])
+
+  useEffect(() => {
+    if(localStorage?.playlists){
+      dispatch(localStorageCreatePlaylist(JSON.parse(localStorage?.playlists)))
+  } 
+// eslint-disable-next-line
+  }, [])
 
   return (
     <div>

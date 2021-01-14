@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Songs from '../Songs'
+import Playlist from '../Playlists'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -88,7 +89,7 @@ export default function NavTabs() {
         <Songs/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Playlists
+        <Playlist/>
       </TabPanel>
      
     </div>

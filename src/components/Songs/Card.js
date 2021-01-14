@@ -9,6 +9,10 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import Grid from '@material-ui/core/Grid';
+import { red } from "@material-ui/core/colors";
+import CardHeader from "@material-ui/core/CardHeader";
+import CloseIcon from '@material-ui/icons/Close';
+import MenuList from './MenuList';
 import Img1 from '../../img/img.jpg';
 import { truncate } from '../../utils'
 
@@ -38,24 +42,33 @@ const useStyles = makeStyles((theme) => ({
         height: 38,
         width: 38,
     },
+    avatar: {
+        backgroundColor: red[300]
+    }
 }));
 
-export default function MediaControlCard({ data }) {
+export default function MediaControlCard({ data,showSM,showMenu,handleClick }) {
     const classes = useStyles();
     const theme = useTheme();
 
+ 
     return (
         <>
-            {data.map((val, i) => (
-                <Grid item xs={12} sm={6}>
-                    <Card className={classes.root}>
+            {data?.map((val, i) => (
+                <Grid item xs={12} sm={showSM ? 6 : 12} key={i}>
+                    <Card className={classes.root} style={{backgroundColor: !showMenu ? 'lightgray': 'white'}}>
+                        <CardHeader
+                            action={
+                               showMenu ? <MenuList songData={val}/> : <IconButton onClick={() => handleClick(val)}><CloseIcon /></IconButton>
+                            }
+                        />
                         <div className={classes.details}>
                             <CardContent className={classes.content}>
                                 <Typography component="h5" variant="h5">
-                                    {truncate(val.title)}
+                                    {truncate(val?.title,20)}
                                 </Typography>
                                 <Typography variant="subtitle1" color="textSecondary">
-                                    {truncate(val.title)}
+                                    {truncate(val?.title,15)}
                                 </Typography>
                             </CardContent>
                             <div className={classes.controls}>
