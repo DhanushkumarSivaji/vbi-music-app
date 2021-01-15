@@ -25,3 +25,9 @@ export const firstUpperCase = (input) =>
 {
     return input[0].toUpperCase() + input.substr(1);
 }
+
+export const mergeById = (a1, a2) =>
+    a1.map(itm => ({
+    ...a2.find((item) => (item.id === itm.id) && item),
+    ...itm
+}));

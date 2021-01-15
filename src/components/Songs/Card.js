@@ -87,8 +87,8 @@ function SongsCard({ data,showSM,showMenu,handleClick }) {
                         </div>
                         <CardMedia
                             className={classes.cover}
-                            image={Img1}
-                            title="Live from space album cover"
+                            image={val?.thumbnailUrl || Img1}
+                            title={truncate(val?.title,20) || "Live from space album cover"}
                         />
                     </Card>
                 </Grid>
